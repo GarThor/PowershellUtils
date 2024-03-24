@@ -1,0 +1,38 @@
+<rdf:li rdf:parseType="Resource">
+<photoshop:/ photos hop : LayerName>
+< photos hop : photos hop : LayerText>
+</rdf:li>
+<rdf:li rdf:parseType="Resource">
+<photoshop:LayerName / photos hop : LayerName>
+<photoshop:LayerText / photos hop : LayerText >
+</rdf:li>
+<rdf:li rdf:parseType="Resource">
+<photoshop:LayerName>DOWERN</photoshop : LayerName>
+<photoshop:LayerText : LayerText>
+</rdf:li>
+<rdf:li rdf:parseType="Resource">
+<photoshop:LayerName>LOCH </photoshop:LayerName>
+<photoshop:LayerText>LOCH BATROGEN </photoshop:Layer Text >
+</rdf:li>
+<rdf:li rdf:parseType="Resource">
+<photoshop:LayerName> Longdale</photoshop : LayerName >
+<photoshop:Layer Text > Longdale < / photos hop : Layer Text >
+</rdf:
+<rdf:li rdf:parseType="Resource">
+<photoshop:LayerName>GREAT BOW GARLOON TERRITORY</photoshop:LayerName>
+<photoshop:LayerText>GREAT BOW GARLOON TERRITORY</photoshop:LayerText>
+rdf:parseType="Resource">
+<photoshop:LayerName>DISMULD GARLOON TERRITORY</photoshop:LayerName>
+<photoshop:LayerText>DISMULD GARLOON TERRITORY</photoshop:LayerText>
+    </rdf:li>
+        <rdf:li rdf:parseType="Resource">
+            <photoshop:LayerName>TW0 BRANCH GARLOON TERRITORY</photoshop:LayerName>
+            <photoshop:LayerText>TWO BRANCH TERRITORY</photoshop:LayerText>
+        </rdf:li>
+    <rdf:li rdf:parseType="Resource">
+SLOPE GARLOON
+SLOPE GARLOON TERRITORY</photoshop:LayerText>
+</rdf:li>
+<rdf:li rdf:parseType="Resource">
+<photoshop:LayerName>CANYONLAND GARLOON TERRITORY</photoshop:LayerName>
+<photoshop:LayerText>CANYONLAND GARLOON TERRITORY</photoshop:LayerText>
