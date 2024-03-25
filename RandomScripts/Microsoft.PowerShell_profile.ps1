@@ -12,95 +12,18 @@ $Steam	 = $ProgramFiles64 + 'Steam\Steam.exe'
 $Pico 	 = $ProgramFiles64 + 'Notepad++\notepad++.exe'
 $FireFox = $ProgramFiles64 + 'Mozilla Firefox\firefox.exe'
 $Chrome  = $ProgramFiles64 + 'Google\Chrome\Application\chrome.exe'
-$IE		 = $ProgramFiles64 + 'Internet Explorer\iexplore.exe'
 $Python	 = 'C:\Python3_5\' + 'Python.exe'
 
 set-alias steam		$Steam	 
 set-alias pico 		$Pico 	 
 set-alias firefox 	$FireFox 
 set-alias chrome 	$Chrome  
-set-alias IE		$IE		 
 set-alias python	$Python	 
-
-### AA Dirs/shortcuts:
-$AAJR 			= 'D:\Projects_AA\UE3\Branches\AAJR\'
-$AABin 			= $AAJR + 'Binaries\'
-$AAGame 		= $AABin + 'Win32\AAGame.com'
-$AALauncher 	= $AABin + 'Win32\AALauncher32.exe'
-$AAGame64 		= $AABin + 'Win64\AAGame.com'
-$AALauncher64 	= $AABin + 'Win64\AALauncher64.exe'
-$AAGEditor   	= $AABin + 'Win32\AAGameEditor.exe'
-$AAMEditor   	= $AABin + 'Win32\AAMissionEditor.exe'
-
-set-alias AAGame		$AAGame
-set-alias AALauncher	$AALauncher
-set-alias AAGame64		$AAGame64
-set-alias AALauncher64	$AALauncher64
-set-alias AAGEditor     $AAGEditor
-set-alias AAMEditor		$AAMEditor
 
 ### CMDLets
 
 ### Process-related functions:
-function StartProcess
-{
-	[CmdletBinding()]
-	Param
-	(
-	[string]$Process="notepad",
-	$Count=10
-	)
-	for($i=0;$i -lt $Count;$i++)
-	{
-		&$Process
-	}
-}
-function KillAll
-{
-	[CmdletBinding()]
-	Param
-	(
-	[Parameter(
-        Position=1, 
-        Mandatory=$false, 
-        ValueFromPipeline=$true)]
-    [PSObject[]]
-	$InputProcesses,
-	[Parameter(
-        Position=0, 
-        Mandatory=$false, 
-        ValueFromPipeline=$false)]
-    $ProcessName,
-	[switch]$WhatIf
-	)
-	
-	Begin { }
-    
-	Process { 
-		if ($InputProcesses -ne $Null)
-		{
-			[string]$Id = $InputProcesses.Id
-			[string]$Name = $InputProcesses.Name 
-			[string]$Priority = $InputProcesses.PriorityClass
-			stop-process $InputProcesses -WhatIf:$WhatIf
-		}
-	}
-	
-	End {
-		if ($ProcessName -ne $Null -and $ProcessName -ne "")
-		{
-			$process = get-process -name $ProcessName; 
 
-			foreach ($p in $process) 
-			{
-				[string]$Id = $P.Id
-				[string]$Name = $P.Name 
-				[string]$Priority = $P.PriorityClass
-				stop-process $p -WhatIf:$WhatIf
-			}
-		}
-	}
-}
 function SetPriority
 {
 	[CmdletBinding()]
@@ -519,26 +442,6 @@ function MyGrep
 	write-host ""
 }
 
-
-#### AA-related build functions
-function AALauncher_HAS
-{
-	&AALauncher /ds
-}
-
-function aa_make_full
-{
-	&aagame make -full
-}
-function aa_make
-{
-	&aagame make
-}
-function aa_server
-{
-	&aagame server bdx_breach_ex -lan
-}
-
 ### crypto-algs
 function MD5SUM
 {
@@ -735,24 +638,3 @@ function set-uas
 	}
 }
 
-### Perform a number of searches in the selected browser to get bing rewards points
-# function  getpoints
-# {
-	# Param
-	# (
-		# [string]$browser,
-		# [string]$howmany
-	# )
-	
-	# $Mod = Import-Module C:\Users\Admin\Documents\WindowsPowerShell\SearchTerms.psm1
-	
-	# $Dictionary = Read-Dictionary "C:\Users\Admin\Documents\WindowsPowerShell\ComicBookHeros.txt"
-
-	# for ($i = 0; $i -lt $howmany; $i++)
-	# {
-		# $SearchTerm = Get-SearchTerm $Dictionary -1
-		# search $browser $SearchTerm
-		# #echo $SearchTerm
-		# sleep(1)
-	# };
-# }
