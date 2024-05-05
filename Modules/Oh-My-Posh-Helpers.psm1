@@ -1,14 +1,15 @@
 $script:CurrentTheme = "";
 $script:DefaultTheme = "Jandedobbeleer.omp";
 $script:ThemeStack = New-Object System.Collections.Stack;
+$script:ThemesDir = "$(oh-my-posh cache path)/themes";
 
 function Find-Themes {   
     [CmdletBinding()]  
     param (
-        [string]$Path = $ENV:POSH_THEMES_PATH
+        [string]$Path = $script:ThemesDir
     )
 
-    $themes = Get-ChildItem "$ENV:POSH_THEMES_PATH\*.omp.*" | Where-Object { ($_.extension -eq ".json") -or ($_.extension -eq ".yaml") };
+    $themes = Get-ChildItem "$script:ThemesDir\*.omp.*" | Where-Object { ($_.extension -eq ".json") -or ($_.extension -eq ".yaml") };
     $themes.BaseName;
 }
 
@@ -23,16 +24,16 @@ function Set-Theme {
                     $fakeBoundParameters )
                 Find-Themes | Where-Object { $_.StartsWith($wordToComplete) };
             } )]
-        [ValidateScript({ (Test-Path "$ENV:POSH_THEMES_PATH\$_.json") -or (Test-Path "$ENV:POSH_THEMES_PATH\$_.yaml") })]  
+        [ValidateScript({ (Test-Path "$script:ThemesDir\$_.json") -or (Test-Path "$script:ThemesDir\$_.yaml") })]  
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [string]$Theme
     )
 
-    if (Test-Path "$ENV:POSH_THEMES_PATH\$Theme.json") {
-        oh-my-posh init powershell --config "$ENV:POSH_THEMES_PATH\$Theme.json" | Invoke-Expression
+    if (Test-Path "$script:ThemesDir\$Theme.json") {
+        oh-my-posh init powershell --config "$script:ThemesDir\$Theme.json" | Invoke-Expression
     }
-    elseif (Test-Path "$ENV:POSH_THEMES_PATH\$Theme.yaml") {
-        oh-my-posh init powershell --config "$ENV:POSH_THEMES_PATH\$Theme.yaml" | Invoke-Expression
+    elseif (Test-Path "$script:ThemesDir\$Theme.yaml") {
+        oh-my-posh init powershell --config "$script:ThemesDir\$Theme.yaml" | Invoke-Expression
     }
     $script:CurrentTheme = $Theme;
 }
@@ -52,7 +53,7 @@ function Push-Theme {
                     $fakeBoundParameters )
                 Find-Themes | Where-Object { $_.StartsWith($wordToComplete) };
             } )]
-        [ValidateScript({ (Test-Path "$ENV:POSH_THEMES_PATH\$_.json") -or (Test-Path "$ENV:POSH_THEMES_PATH\$_.yaml") })]  
+        [ValidateScript({ (Test-Path "$script:ThemesDir\$_.json") -or (Test-Path "$script:ThemesDir\$_.yaml") })]  
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [string]$Theme
     )
